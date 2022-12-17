@@ -4,6 +4,7 @@ do
     today=`date +"%Y%m%d"`
     curl -X "GET" "https://$host/api/v1/streaming/public" \
          --no-progress-meter | \
+        tee -a "$today.json" | \
         grep url | \
         sed 's/data://g' | \
 
