@@ -1,4 +1,4 @@
-cat domains|while read -r host
+cat domains|grep -v "#"|while read -r host
 do
    ./get-stream.sh $host &
 done
