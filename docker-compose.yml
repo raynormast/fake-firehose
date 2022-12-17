@@ -1,0 +1,10 @@
+version: "3.9 "
+
+services:
+  fake-firehose:
+    build: .
+    image: fakefirehose:latest
+    volumes:
+      - ./data:/data
+      - ./config:/config
+    restart: always

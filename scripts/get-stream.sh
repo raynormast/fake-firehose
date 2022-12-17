@@ -2,9 +2,9 @@ host=$1
 while true
 do
     today=`date +"%Y%m%d"`
-    curl -X "GET" "https://$host/api/v1/streaming/public" \
+    curl -X "GET" "https://$host/api/v1/streaming/public?&local=true" \
          --no-progress-meter | \
-        tee -a "$today.json" | \
+        tee -a "/data/$today.json" | \
         grep url | \
         sed 's/data://g' | \
 
