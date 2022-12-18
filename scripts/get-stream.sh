@@ -1,8 +1,33 @@
 host=$1
+type=$2
+
+if [[ "$host" == "" ]]
+then
+    echo "Empty host: $host"
+    exit 2
+fi
+
 while true
 do
     today=`date +"%Y%m%d"`
-    curl -X "GET" "https://$host/api/v1/streaming/public?&local=true" \
+
+    case "$type" in
+        "federated")
+            fetch="https://$host/api/v1/streaming/public";;
+        "local")
+            fetch="https://$host/api/v1/streaming/public?local=true";;
+        "hashtags")
+            fetch="https://$host/api/v1/streaming/hashtag?tag=linux"
+            echo "Sorry, hash tags aren't implemented yet :("
+            exit 1
+            ;;
+    esac
+
+    echo "Starting to stream $fetch in 5 seconds"
+
+    sleep 5s;
+
+    curl -X "GET" "$fetch" \
          --no-progress-meter | \
         tee -a "/data/$today.json" | \
         grep url | \
@@ -16,8 +41,8 @@ do
             url=`echo $line | jq .url| sed 's/\"//g'` 
             uri=`echo $line | jq .uri| sed 's/\"//g'`
 
-            echo "$host $url"
-            echo $uri >> "$today.uris.txt"
+            echo "STREAMING: $host $url"
+            echo $uri >> "/data/$today.uris.txt"
 
         fi
     done

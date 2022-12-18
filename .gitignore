@@ -1,3 +1,7 @@
 .DS_Store
 data/20221217.json
 20221217.uris.txt
+.env.production
+config/domains-federated
+config/domains-local
+config/hashtags
