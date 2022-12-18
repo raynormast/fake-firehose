@@ -21,5 +21,8 @@ then
    /scripts/run-firehose.sh &
 fi
 
-## Don't let the container exit
-while true; do sleep 1; done
+## We don't have a health check, so just exit after an hour
+# If your docker file has restart: always on this should gracefully exit, and 
+# then restart
+sleep 1h
+exit 0
