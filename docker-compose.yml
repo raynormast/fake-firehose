@@ -8,3 +8,4 @@ services:
       - ./data:/data
       - ./config:/config
     restart: always
+    env_file: .env.production
