@@ -1,0 +1,11 @@
+## If this file is not empty then EVERY host from an earlier file
+## including duplicates, will stream to look for these hashtags
+
+## You can list hashtags with a leading "#" ...
+
+cybersecurity
+mastoadmin
+
+## Or you can list hashtags with the "#"
+
+#mastodon

@@ -1,7 +1,12 @@
+## Comments require two #'s,, like ##
+
 ## Fake Firehose will only take all public posts from these domains
 ## This is the true firehose, use it carefully or blow up your server
 
-### International English (if you aren't from the US) ###
+## Hashtags to follow by instance
+mastodon.social #JohnMastodon #silentsunday #mastoadmin
+
+## International English (if you aren't from the US) ###
 mastodon.scot
 aus.social
 mastodon.nz
