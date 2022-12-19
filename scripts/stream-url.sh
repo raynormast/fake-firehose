@@ -1,30 +1,21 @@
-host=$1
-type=$2
-hashtag=$1
+url=$1 #A proper URL is all that should be sent to this script
+host=$2
 
-if [[ "$host" == "" ]]
+if [[ "$url" == "" ]]
 then
-    echo "Empty host: $host"
+    echo "Empty url, skipping" # Exit if an empty URL was sent
     exit 2
 fi
 
-while true
+while true # Loop endlessly
 do
     today=`date +"%Y%m%d"`
 
-    case "$type" in
-        "federated")
-            fetch="https://$host/api/v1/streaming/public";;
-        "local")
-            fetch="https://$host/api/v1/streaming/public?local=true";;
-
-    esac
-
-    echo "Starting to stream $fetch in 5 seconds"
+    echo "Starting to stream $url in 5 seconds"
 
     sleep 5s;
 
-    curl -X "GET" "$fetch" \
+    curl -X "GET" "$url" \
          --no-progress-meter | \
         tee -a "/data/$today.json" | \
         grep url | \
@@ -38,7 +29,7 @@ do
             url=`echo $line | jq .url| sed 's/\"//g'` 
             uri=`echo $line | jq .uri| sed 's/\"//g'`
 
-            echo "STREAMING: $host $url"
+            echo "STREAMING from $host $url"
             echo $uri >> "/data/$today.uris.txt"
 
         fi
