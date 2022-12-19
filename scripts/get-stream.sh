@@ -1,5 +1,6 @@
 host=$1
 type=$2
+hashtag=$1
 
 if [[ "$host" == "" ]]
 then
@@ -16,11 +17,7 @@ do
             fetch="https://$host/api/v1/streaming/public";;
         "local")
             fetch="https://$host/api/v1/streaming/public?local=true";;
-        "hashtags")
-            fetch="https://$host/api/v1/streaming/hashtag?tag=linux"
-            echo "Sorry, hash tags aren't implemented yet :("
-            exit 1
-            ;;
+
     esac
 
     echo "Starting to stream $fetch in 5 seconds"
