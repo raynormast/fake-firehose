@@ -62,7 +62,7 @@ do
       elif [[ "$line" != *" #"* ]]; then
          echo "$line didn't have hashtags"
          host=$line
-         echo "https://$line/api/v1/streaming/local $line" >> /config/urls.txt
+         echo "https://$line/api/v1/streaming/public/local $line" >> /config/urls.txt
       fi
       echo $host >> /config/hosts
    fi
