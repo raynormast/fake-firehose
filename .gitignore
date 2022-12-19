@@ -5,3 +5,10 @@ data/20221217.json
 config/domains-federated
 config/domains-local
 config/hashtags
+config/hosts
+.gitignore
+data/20221219.json
+.gitignore
+config/hashtag-urls.txt
+config/urls.txt
+data/20221219.uris.txt
