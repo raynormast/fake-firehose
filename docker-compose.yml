@@ -5,7 +5,7 @@ services:
     build: .
     image: fakefirehose:latest
     volumes:
-      - ./data:/data
+      - ../data:/data
       - ./config:/config
     restart: always
     env_file: .env.production

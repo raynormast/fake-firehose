@@ -82,7 +82,7 @@ cat /config/hashtag-urls.txt >> /config/urls.txt
 cat /config/urls.txt | while read -r url
 do
    echo "Opening $url to stream"
-   sleep 0.1s
+   sleep 0.2s
    ./stream-url.sh $url &
 done
 
@@ -94,5 +94,5 @@ fi
 ## We don't have a health check, so just exit after an hour
 # If your docker file has restart: always on this should gracefully exit, and 
 # then restart
-sleep 1h
+sleep 2h
 exit 0
