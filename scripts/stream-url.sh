@@ -36,6 +36,12 @@ do
             fi
         done
     else
+
+        if [[ ! -d "/data/$today/" ]]
+        then
+            mkdir -p "/data/$today/"
+        fi
+
         curl -X "GET" "$url" --no-progress-meter >> "/data/$today/$today.$host.json"
     fi
 
@@ -46,3 +52,6 @@ do
     fi
 
 done
+
+## Exit 0 by default
+exit 0
