@@ -12,26 +12,30 @@ do
     today=`date +"%Y%m%d"`
 
     echo "Starting to stream $url in 5 seconds"
+    echo "Archive status is $archive"
 
     sleep 5s;
 
-    curl -X "GET" "$url" \
-         --no-progress-meter | \
-        tee -a "/data/$today.json" | \
-        grep url | \
-        sed 's/data://g' | \
+    if [[ $archive != "true" ]]
+    then
+        curl -X "GET" "$url" \
+            --no-progress-meter | \
+            tee -a "/data/$today.json" | \
+            grep url | \
+            sed 's/data://g' | \
 
-     while read -r line
-     do
+        while read -r line
+        do
+            if [[ $line == *"uri"* ]]
+            then
+                url=`echo $line | jq .url| sed 's/\"//g'` 
+                uri=`echo $line | jq .uri| sed 's/\"//g'`
 
-         if [[ $line == *"uri"* ]]
-         then
-            url=`echo $line | jq .url| sed 's/\"//g'` 
-            uri=`echo $line | jq .uri| sed 's/\"//g'`
-
-            echo "STREAMING from $host $url"
-            echo $uri >> "/data/$today.uris.txt"
-
-        fi
-    done
+                echo "STREAMING from $host $url"
+                echo $uri >> "/data/$today.uris.txt"
+            fi
+        done
+    else
+        curl -X "GET" "$url" --no-progress-meter >> "/data/$today.$host.json"
+    fi
 done

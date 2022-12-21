@@ -12,4 +12,4 @@ data/20221219.json
 config/hashtag-urls.txt
 config/urls.txt
 data/20221219.uris.txt
-./data/*
+data/*

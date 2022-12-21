@@ -82,7 +82,7 @@ cat /config/hashtag-urls.txt >> /config/urls.txt
 cat /config/urls.txt | while read -r url
 do
    echo "Opening $url to stream"
-   sleep 1s
+   sleep 0.1s
    ./stream-url.sh $url &
 done
 
