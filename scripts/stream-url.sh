@@ -36,6 +36,13 @@ do
             fi
         done
     else
-        curl -X "GET" "$url" --no-progress-meter >> "/data/$today.$host.json"
+        curl -X "GET" "$url" --no-progress-meter >> "/data/$today/$today.$host.json"
     fi
+
+    # If we are in archive mode only, then back off if there is a curl error.
+    if [[ $archive == "true" ]]
+    then
+        sleep 5m;
+    fi
+
 done
