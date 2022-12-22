@@ -8,7 +8,7 @@ cat /config/domains-federated | grep -v "##" | while read -r line
 do
    #filter out empty lines
    if [[ "$line" != "" ]]; then
-      echo "Opening federated line $line"
+      echo "[INFO] Opening federated line $line"
 
       #Check for hashtags
       if [[ "$line" == *" #"* ]]; then
@@ -41,12 +41,12 @@ cat /config/domains-local | grep -v "##" | while read -r line
 do
    #filter out empty lines
    if [[ "$line" != "" ]]; then
-      echo "Opening federated line $line"
+      echo "[INFO] Opening federated line $line"
 
       #Check for hashtags
       if [[ "$line" == *" #"* ]]; then
 
-         echo "$line has hashtags!"
+         echo "[INFO] $line has hashtags!"
 
          # Get just the first field of the line, which is the host
          host=`echo $line | cut -d " " -f 1`
@@ -81,8 +81,8 @@ cat /config/hashtag-urls.txt >> /config/urls.txt
 
 cat /config/urls.txt | while read -r url
 do
-   echo "Opening $url to stream"
-   sleep 0.2s
+   echo "[INFO] Opening $url to stream"
+   sleep 0.1s
    ./stream-url.sh $url &
 done
 
@@ -94,5 +94,5 @@ fi
 ## We don't have a health check, so just exit after an hour
 # If your docker file has restart: always on this should gracefully exit, and 
 # then restart
-sleep 2h
+sleep 4h
 exit 0
