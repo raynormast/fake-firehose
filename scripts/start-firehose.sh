@@ -94,5 +94,6 @@ fi
 ## We don't have a health check, so just exit after an hour
 # If your docker file has restart: always on this should gracefully exit, and 
 # then restart
-sleep 4h
+echo "[INFO] Container restart timoe is $restartTimeout"
+sleep $restartTimeout
 exit 0
