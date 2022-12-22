@@ -19,7 +19,7 @@ while true
     cat backfilluris.txt| \
     while read -r uri
         do 
-        echo "FIREHOSE: Posting $uri"
+        echo "[INFO] RUN-FIREHOSE: Posting $uri"
 
             ## Send it to the fake relay as a background job
             curl -X "POST" "$fakeRelayHost" \
@@ -34,9 +34,9 @@ while true
             until [ $curls -lt $maxCurls ]
             do
                 curls=`ps -ef|grep curl|wc -l`
-                echo "FIREHOSE: Waiting for existing curls to finish, at $curls"
+                echo "[INFO] RUN-FIREHOSE: Waiting for existing curls to finish, at $curls"
                 linesLeft=`cat "$source"|wc -l` 
-                echo "FIREHOSE: $linesLeft Total URIs left"
+                echo "[INFO] RUN-FIREHOSE:$linesLeft Total URIs left"
                 sleep 5s
             done
 
@@ -49,7 +49,7 @@ while true
         until [ $linesLeft -gt $minURIs ]
         do
             linesLeft=`cat "$source"|wc -l` 
-            echo "FIREHOSE: Waiting for more URIs to batch, currently at $linesLeft"
+            echo "[INFO] RUN-FIREHOSE: Waiting for more URIs to batch, currently at $linesLeft"
             sleep 5s
         done
 done
