@@ -5,7 +5,9 @@ RUN apt install -y \
     jq \
     curl \
     nano \
-    vim
+    vim \
+    dnsutils \
+    wget
 
 COPY ./scripts /scripts
 WORKDIR /scripts
