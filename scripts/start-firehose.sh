@@ -44,7 +44,7 @@ do
       echo "[INFO] Opening federated line $line"
 
       #Check for hashtags
-      if [[ "$line" == *" #"* ]]; then
+      if [[ "$line" == *" "* ]]; then
 
          echo "[INFO] $line has hashtags!"
 
@@ -82,7 +82,7 @@ cat /config/hashtag-urls.txt >> /config/urls.txt
 cat /config/urls.txt | while read -r url
 do
    echo "[INFO] Opening $url to stream"
-   sleep 0.1s
+   sleep $streamDelay
    ./stream-url.sh $url &
 done
 
