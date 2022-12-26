@@ -49,7 +49,7 @@ do
                 url=`echo $line | jq .url| sed 's/\"//g'` 
                 uri=`echo $line | jq .uri| sed 's/\"//g'`
 
-                echo "[INFO] STREAMING from $host $url"
+                echo "[INFO] Posting $url from $host"
                 echo $uri >> "/data/$today.uris.txt"
             fi
         done
