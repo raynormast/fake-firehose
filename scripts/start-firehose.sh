@@ -21,13 +21,13 @@ do
          for tag in $tags
          do
             if [[ $tag != "" ]]; then
-            echo "Found tag $tag"
+            echo "[INFO] Found tag $tag"
             # Create a url to fetch for each tag
             echo "https://$host/api/v1/streaming/hashtag?tag=$tag $host" >> /config/urls.txt
             fi
          done
       elif [[ "$line" != *" #"* ]]; then
-         echo "$line didn't have hashtags"
+         echo "[INFO] $line didn't have hashtags"
          host=$line
          echo "https://$line/api/v1/streaming/public $line" >> /config/urls.txt
       fi 
@@ -54,13 +54,13 @@ do
          for tag in $tags
          do
             if [[ $tag != "" ]]; then
-            echo "Found tag $tag"
+            echo "[INFO] Found tag $tag"
             # Create a url to fetch for each tag
             echo "https://$host/api/v1/streaming/hashtag/local?tag=$tag $host" >> /config/urls.txt
             fi
          done
       elif [[ "$line" != *" #"* ]]; then
-         echo "$line didn't have hashtags"
+         echo "[INFO] $line didn't have hashtags"
          host=$line
          echo "https://$line/api/v1/streaming/public/local $line" >> /config/urls.txt
       fi
