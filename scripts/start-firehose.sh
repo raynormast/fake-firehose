@@ -11,7 +11,7 @@ do
       echo "[INFO] Opening federated line $line"
 
       #Check for hashtags
-      if [[ "$line" == *" #"* ]]; then
+      if [[ "$line" == *" "* ]]; then
 
          echo "$line has hashtags!"
 
