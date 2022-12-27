@@ -1,15 +1,12 @@
 .DS_Store
-data/20221217.json
-20221217.uris.txt
+
 .env.production
 config/domains-federated
 config/domains-local
 config/hashtags
 config/hosts
 .gitignore
-data/20221219.json
 .gitignore
 config/hashtag-urls.txt
 config/urls.txt
-data/20221219.uris.txt
-data/*
+log.txt
