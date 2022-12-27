@@ -1,0 +1,11 @@
+version: "3.9 "
+
+services:
+  firehose-archive:
+    build: .
+    image: fakefirehose:latest
+    volumes:
+      - ../data:/data
+      - ./config:/config
+    restart: always
+    env_file: .env.production
