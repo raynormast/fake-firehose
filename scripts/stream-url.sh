@@ -8,11 +8,6 @@ then
     exit 2
 fi
 
-# if [[ "$checkUrl" != *"200"* ]]
-# then
-#     echo "[WARN] Server threw an error, skipping"
-# fi
-
 # Check to see if domain name resolves. If not, exist
 if [[ ! `dig $host +short` ]]
 then
