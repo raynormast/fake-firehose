@@ -1,12 +1,10 @@
 .DS_Store
-
 .env.production
 config/domains-federated
 config/domains-local
 config/hashtags
 config/hosts
-.gitignore
-.gitignore
+
 config/hashtag-urls.txt
 config/urls.txt
 log.txt
