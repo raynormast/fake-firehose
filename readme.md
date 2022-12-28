@@ -29,7 +29,7 @@ To run it in docker -- recommended
 
 1. Make sure you have [docker installed](https://docs.docker.com/engine/install/).
 2. From your shell: create a directory, it is recommended that you give it a relevant name
-3. Go into that directory and use `git pull https://github.com/raynormast/fake-firehose.git`
+3. Go into that directory and use `git clone https://github.com/raynormast/fake-firehose.git`
 4. Go into the created directory: `cd fake-firehose`
 5. `docker build -t fakefirehose .`
 6. Edit your `docker-compose.yml` file as needed. **The biggest thing** is to watch the volumes. It is _highly_ recommended that you keep your data directory in the parent directory, and NOT the directory the git repo is in.
