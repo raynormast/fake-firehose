@@ -2,6 +2,7 @@
 
 echo > /config/urls.txt
 echo > /config/hosts
+echo > /config/hashtag-urls.txt
 
 # Get federated hosts and begin to stream them
 cat /config/domains-federated | grep -v "##" | while read -r line
