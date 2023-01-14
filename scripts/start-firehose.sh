@@ -2,6 +2,7 @@
 
 echo > /config/urls.txt
 echo > /config/hosts
+echo > /config/hashtag-urls.txt
 
 # Get federated hosts and begin to stream them
 cat /config/domains-federated | grep -v "##" | while read -r line
@@ -79,11 +80,14 @@ done
 
 cat /config/hashtag-urls.txt >> /config/urls.txt
 
-cat /config/urls.txt | while read -r url
+sort -u /config/urls.txt | while read -r url
 do
-   echo "[INFO] Opening $url to stream"
-   sleep $streamDelay
-   ./stream-url.sh $url &
+   if [[ ! $url == "#"* ]]
+   then 
+      echo "[INFO] Opening $url to stream"
+      sleep $streamDelay
+      ./stream-url.sh $url &
+   fi 
 done
 
 if [[ $runFirehose == true ]]
