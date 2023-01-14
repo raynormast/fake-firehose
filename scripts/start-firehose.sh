@@ -82,9 +82,12 @@ cat /config/hashtag-urls.txt >> /config/urls.txt
 
 sort -u /config/urls.txt | while read -r url
 do
-   echo "[INFO] Opening $url to stream"
-   sleep $streamDelay
-   ./stream-url.sh $url &
+   if [[ ! $url == "#"* ]]
+   then 
+      echo "[INFO] Opening $url to stream"
+      sleep $streamDelay
+      ./stream-url.sh $url &
+   fi 
 done
 
 if [[ $runFirehose == true ]]
